@@ -10,9 +10,7 @@ setdefaultchannel(s::ASCIIString) = (global defaultchannel = TSChannel(s))
 
 function updatedata(channel::TSChannel, status::ASCIIString, fields...)
   data = "key=$(channel.writekey)"
-  println((fields, channel, status))
   for (i,f) in enumerate(fields)
-    println((i,f))
     data *= "&field$i=$f"
   end
   if status != ""
@@ -22,7 +20,6 @@ function updatedata(channel::TSChannel, status::ASCIIString, fields...)
   data
 end
 function tsupdate(fields::Number...;status::ASCIIString="", channel::TSChannel=defaultchannel)
-  println(updatedata(channel, status, fields...))
   response = post(updateapiurl, data=updatedata(channel, status, fields...), headers=updateheaders)
 end
 tssuccess(r::Requests.Response) = r.data != "0"
