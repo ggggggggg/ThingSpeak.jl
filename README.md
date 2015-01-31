@@ -10,3 +10,5 @@ ThingSpeak.setdefaultchannel("YOURAPIKEY") #this is technically a secret but its
 response = tsupdate(1,2,47,status="I posted a status") # this post the values 1,2 and 47 to fields 1,2 and 3 respectivley
 tssuccess(response) || error("it didn't work!") # in case you care if it worked
 ```
+
+[The testing Channel](https://thingspeak.com/channels/25131)
