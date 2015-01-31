@@ -6,7 +6,6 @@ using ThingSpeak
 global apikey
 try
   apikey = ENV["THINGSPEAK_API_KEY"]
-  println(apikey)
   println("Loading API Key from environment variable THINGSPEAK_API_KEY")
 catch
   println("Loading API Key from testingapikey file")
