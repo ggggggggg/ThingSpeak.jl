@@ -1,4 +1,3 @@
 *.jl.cov
 *.jl.mem
-
-test/testingapikey
+test/THINGSPEAK_API_KEY
