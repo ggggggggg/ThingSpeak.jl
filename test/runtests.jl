@@ -3,9 +3,8 @@ using Base.Test
 
 # write your own tests here
 using ThingSpeak
-global apikey
 function loadsecret(name="TEST_SECRET")
-  if Base._hasenv(name) #change to "name in ENV" once in works
+  if name in keys(ENV)
     println("Loading $name from environment variable")
     return ENV[name]
   else
