@@ -26,7 +26,7 @@ function tsupdate(fields...;status::AbstractString="", channel::TSChannel=defaul
   response = post(updateapiurl, data=updatedata(channel, status, Dict(k=>v for (k,v) in enumerate(fields))), headers=updateheaders)
 end
 
-tssuccess(r::Requests.Response) = r.data != "0"
+tssuccess(r::Requests.Response) = r.data != "0" && r.status==200
 
 export tsupdate, tssuccess
 end # module

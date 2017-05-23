@@ -10,7 +10,7 @@ function loadsecret(name="THINGSPEAK_API_KEY")
   else
     println("Loading $name from file")
     return open(name) do f
-      readline(f)
+      chomp(readline(f))
     end
   end
 end
@@ -18,5 +18,7 @@ end
 ThingSpeak.setdefaultchannel(loadsecret()) #this is technically a secret but its a dedicated channel for testing
 response = tsupdate(Dict(3=>3.5),status="ran runtests.jl for ThingSpeak.jl")
 response = tsupdate(1.1,2.2)
+@test tssuccess(response)
 
-tssuccess(response)
+badresponse = tsupdate(1,2,channel=ThingSpeak.TSChannel("ABC")) # use invalid API key
+@test !tssuccess(badresponse)
